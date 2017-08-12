@@ -1,0 +1,10 @@
+certifi
+chardet
+future
+idna
+oauthlib
+python-twitter
+PyYAML
+requests
+requests-oauthlib
+urllib3
