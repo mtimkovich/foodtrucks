@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import datetime as dt
+import os
 from pushbullet import Pushbullet
 import twitter
 import yaml
@@ -7,6 +8,8 @@ import yaml
 
 def timestamp(time_str):
     return dt.datetime.strptime(time_str, '%a %b %d %H:%M:%S +0000 %Y')
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 with open('config.yml') as f:
     config = yaml.load(f)
