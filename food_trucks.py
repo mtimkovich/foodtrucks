@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import datetime as dt
 import os
 from pushbullet import Pushbullet
@@ -23,7 +23,7 @@ if today.weekday() in set([0, 5, 6]):
 
 acceptable_trucks = set(['CurryUpNow'])
 
-pb = Pushbullet(config['pushbullet']['token'])
+pb = Pushbullet(config['pushbullet_token'])
 api = twitter.Api(**config['twitter'])
 
 tweets = api.GetUserTimeline(screen_name='welovefoodeaze')
