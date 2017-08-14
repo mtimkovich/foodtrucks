@@ -17,8 +17,8 @@ with open('config.yml') as f:
 
 today = dt.datetime.today()
 
-# Don't care on Mon or the weekend
-if today.weekday() in set([0, 5, 6]):
+# Only check Tue-Fri
+if today.weekday() not in set(range(1, 5)):
     sys.exit()
 
 acceptable_trucks = set(['CurryUpNow'])
