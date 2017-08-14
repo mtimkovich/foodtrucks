@@ -3,8 +3,12 @@ chardet
 future
 idna
 oauthlib
+pushbullet.py
+python-magic
 python-twitter
 PyYAML
 requests
 requests-oauthlib
+six
 urllib3
+websocket-client

@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import datetime as dt
+from pushbullet import Pushbullet
 import twitter
 import yaml
 
@@ -10,12 +11,12 @@ def timestamp(time_str):
 with open('config.yml') as f:
     config = yaml.load(f)
 
-# today = dt.today()
-today = dt.date(2017, 8, 11)
+acceptable_trucks = set(['CurryUpNow'])
 
-acceptable_trucks = set('CurryUpNow')
+pb = Pushbullet(config['pushbullet']['token'])
+api = twitter.Api(**config['twitter'])
 
-api = twitter.Api(**config)
+today = dt.datetime.today()
 tweets = api.GetUserTimeline(screen_name='welovefoodeaze')
 for tweet in tweets:
     # Get all tweets from today
@@ -24,9 +25,9 @@ for tweet in tweets:
     if created_at.date() != today:
         break
 
-    has_curry = any(m.screen_name in acceptable_trucks
-            for m in tweet.user_mentions)
+    good_food = any(m.screen_name in acceptable_trucks
+                    for m in tweet.user_mentions)
 
-    print(has_curry)
-    
-    break
+    if good_food:
+        pb.push_note('Curry Up Now', 'is at the food trucks today!')
+        break
