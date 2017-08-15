@@ -36,10 +36,7 @@ today = dt.datetime.today()
 if today.weekday() not in set(range(1, 5)):
     sys.exit()
 
-acceptable_trucks = set([
-    'CurryUpNow',
-    'chairmantruck'
-])
+acceptable_trucks = set(config['trucks'])
 
 pb = Pushbullet(config['pushbullet_token'])
 api = twitter.Api(**config['twitter'])
