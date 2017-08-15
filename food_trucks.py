@@ -58,4 +58,4 @@ good_food = list(trucks_today.intersection(acceptable_trucks))
 
 if good_food:
     msg = make_msg(good_food)
-    pb.push_note('Food Trucks Alert!', msg)
+    pb.push_note('Food Truck Alert!', msg)
